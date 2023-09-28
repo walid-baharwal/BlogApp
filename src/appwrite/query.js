@@ -93,7 +93,7 @@ export class QueryService {
       await this.storage.createFile(config.appwriteBucketId, ID.unique(), file);
       return true;
     } catch (error) {
-      console.log("Appwrite Service Error :: UploadFile :: ", error);
+      console.log("Appwrite Service Error :: Upload File :: ", error);
       return false;
     }
   }
