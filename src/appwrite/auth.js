@@ -1,8 +1,7 @@
 import { Client, Account, ID } from "appwrite";
-import config from "../config/config";
+import config from "../envConfig/envConfig";
 
 export class AuthService {
-
   client = new Client();
   account;
 
@@ -13,7 +12,7 @@ export class AuthService {
     this.account = new Account(this.client);
   }
 
-  async CreateUserAccount({ name, email, password }) {
+  async createUserAccount({ name, email, password }) {
     try {
       const userAccount = await this.account.create(
         ID.unique(),
@@ -39,24 +38,22 @@ export class AuthService {
     }
   }
 
-  async getUser() {
+  async getUserData() {
     try {
       return await this.account.get();
     } catch (error) {
-      console.log("Appwrite Service Error :: getUser :: ", error);
+      console.log("Appwrite Service Error :: getUserData :: ", error);
     }
     return null;
   }
-  
-  async logout(){
+
+  async logout() {
     try {
-        return await this.account.deleteSessions();
+      return await this.account.deleteSessions();
     } catch (error) {
-        console.log("Appwrite Service Error :: Logout :: ", error);
-        
+      console.log("Appwrite Service Error :: Logout :: ", error);
     }
   }
-
 }
 
 const authService = new AuthService();

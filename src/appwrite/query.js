@@ -1,5 +1,5 @@
-import { Client, DataBases, Storage, Query, ID } from "appwrite";
-import config from "../config/config";
+import { Client, Databases, Storage, Query, ID } from "appwrite";
+import config from "../envConfig/envConfig";
 
 export class QueryService {
   client = new Client();
@@ -10,30 +10,42 @@ export class QueryService {
     this.client
       .setEndpoint(config.appwriteUrl)
       .setProject(config.appwriteProjectId);
-    this.database = new DataBases(this.client);
+    this.database = new Databases(this.client);
     this.storage = new Storage(this.client);
   }
 
-  async createPost({ title, slug, content, featuredImage, status, userId }) {
+  async createBlog({
+    author,
+    title,
+    slug,
+    content,
+    featuredImage,
+    category,
+    status,
+    userId,
+  }) {
     try {
-      return await this.database.creatDocument(
+      //console.log(":: ",{ title, slug, content, featuredImage, category,status, userId, author })
+      return await this.database.createDocument(
         config.appwritedDatabaseId,
         config.appwriteCollectionId,
         slug,
         {
+          author,
           title,
           content,
+          category,
           featuredImage,
           status,
           userId,
         }
       );
     } catch (error) {
-      console.log("Appwrite Service Error :: PostCreation :: ", error);
+      console.log("Appwrite Service Error :: BlogCreation :: ", error.message);
     }
   }
 
-  async updatePost({ title, slug, content, featuredImage, status }) {
+  async updateBlog(slug, { title, content, featuredImage, category, status }) {
     try {
       return await this.database.updateDocument(
         config.appwritedDatabaseId,
@@ -42,6 +54,7 @@ export class QueryService {
         {
           title,
           content,
+          category,
           featuredImage,
           status,
         }
@@ -51,7 +64,7 @@ export class QueryService {
     }
   }
 
-  async deletePost(slug) {
+  async deleteBlog(slug) {
     try {
       await this.createPost.deleteDocument(slug);
       return true;
@@ -61,7 +74,7 @@ export class QueryService {
     }
   }
 
-  async getPost(slug) {
+  async getBlog(slug) {
     try {
       return await this.database.getDocument(
         config.appwritedDatabaseId,
@@ -69,29 +82,36 @@ export class QueryService {
         slug
       );
     } catch (error) {
-      console.log("Appwrite Service Error :: GetPost :: ", error);
+      console.log("Appwrite Service Error :: GetBlog :: ", error);
     }
   }
 
   // All active posts
-  async getPosts() {
-    try {
-      return await this.database.getDocument(
-        config.appwritedDatabaseId,
-        config.appwriteCollectionId,
-        [Query.equal("status", "active")]
-      );
-    } catch (error) {
-      console.log("Appwrite Service Error :: GetPosts :: ", error);
+    async getBlogs(queries = []) {
+      try {
+        //console.log(queries)
+        const appwriteQueries = queries.map((query) => Query.equal(query.key, query.value));
+        console.log(appwriteQueries)
+        return await this.database.listDocuments(
+          config.appwritedDatabaseId,
+          config.appwriteCollectionId,
+          appwriteQueries
+
+        );
+      } catch (error) {
+        console.log("Appwrite Service Error :: GetBlogs :: ", error);
+      }
     }
-  }
 
   // File upload service
 
   async uploadFile(file) {
     try {
-      await this.storage.createFile(config.appwriteBucketId, ID.unique(), file);
-      return true;
+      return await this.storage.createFile(
+        config.appwriteBucketId,
+        ID.unique(),
+        file
+      );
     } catch (error) {
       console.log("Appwrite Service Error :: Upload File :: ", error);
       return false;
@@ -125,9 +145,9 @@ export class QueryService {
     }
   }
 
-  getFilePreview(fileId) {
+  getFileView(fileId) {
     try {
-      return this.storage.getFilePreview(config.appwriteBucketId, fileId);
+      return this.storage.getFileView(config.appwriteBucketId, fileId);
     } catch (error) {
       console.log("Appwrite Service Error :: Preview File :: ", error);
     }
