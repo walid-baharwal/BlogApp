@@ -1,6 +1,6 @@
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-import Container from "./container/container";
+import Container from "./container/Container";
 import Logo from "./Logo";
 import User from "./header/user/User";
 import SignInComponent from "./SignInComponent";
