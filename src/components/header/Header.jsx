@@ -103,7 +103,7 @@ const Header = () => {
                 >
                   <img
                     className="h-10 w-10 rounded-full"
-                    src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                    src="https://i.pinimg.com/564x/5e/c9/d9/5ec9d90cf558c385cd631b60b1a51540.jpg"
                     alt="Dan_Abromov"
                   />
                 </button>
