@@ -47,7 +47,7 @@ const Blog = () => {
                       {}
                     </a>
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                     {blogData.author}
+                     {blogData && blogData.author}
                     </p>
                     <p className="text-base text-gray-500 dark:text-gray-400">
                       <span>{blogData && blogData.$createdAt.slice(0,10)}</span>
@@ -56,7 +56,7 @@ const Blog = () => {
                 </div>
               </address>
               <h1 className="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
-                {blogData.title}{" "}
+                {blogData && blogData.title}{" "}
               </h1>
             </header>
 

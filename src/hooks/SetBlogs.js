@@ -27,7 +27,7 @@ export default function SetBlog(AllQueries) {
     setLoader(true);
     const queriesToFetch = category === "All" ? AllQueries.defaultQueries : AllQueries.Queries;
     AllQueries.Queries[0].value = category;
-    console.log(AllQueries.Queries)
+    //console.log(AllQueries.Queries)
     
     fetchData(queriesToFetch);
   }, [category]);

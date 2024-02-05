@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CloudFog } from "lucide-react";
 import queryService from "../appwrite/query";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
@@ -16,8 +16,9 @@ export default function BlogCard({
   userId,
 }) {
   const [timeAgo, setTimeAgo] = useState("Loading...");
-  const userLoggedinId = useSelector((state) => state.auth.userData.$id);
-  useEffect(() => {
+  const userLoggedinId = useSelector((state) => state.auth.userData);
+  console.log('userLoggedinId : ', userLoggedinId)
+  useEffect(() => { 
     const date = new Date($createdAt);
     const timeDifference = Date.now() - date.getTime();
     const secondsDifference = Math.floor(timeDifference / 1000);
@@ -54,7 +55,7 @@ export default function BlogCard({
             <p className="text-xs font-semibold leading-tight text-gray-700">
               #{category}
             </p>
-            {userId === userLoggedinId && (
+            {userId === userLoggedinId.$id && (
               <div className="flex gap-2 mr-2">
                 <Link to={`/editblog/${$id}`}>
                   <FileEdit
