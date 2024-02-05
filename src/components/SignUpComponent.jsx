@@ -6,8 +6,12 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { login } from "../store/authSlice";
+import {Loader } from './index'
+
 
 export default function SignUpComponent() {
+  const [loader,setloader] = useState(false)
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -16,13 +20,18 @@ export default function SignUpComponent() {
   const signUp = async (data) => {
     setError("");
     try {
+      setloader(true)
       const response = await authService.createUserAccount(data);
       if (response) {
         const userData = await authService.getUserData();
+        console.log(userData);
         if (userData) dispatch(login(userData));
         navigate("/");
+
       }
+      setloader(false)
     } catch (error) {
+      setloader(false)
       setError(error.message);
     }
   };
@@ -88,14 +97,15 @@ export default function SignUpComponent() {
               <div>
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                  className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-3 font-semibold leading-7 text-white hover:bg-black/80"
                 >
-                  Get Started <ArrowRight className="ml-2" size={16} />
+             { loader ? <Loader size='md' parentHeight="h-0" ParentClassName='px-4 py-3.5'/> :<span className="flex items-center ">Sign in <ArrowRight className="ml-2" size={16} /></span>}
+
                 </button>
               </div>
             </div>
           </form>
-          <div className="mt-3 space-y-3">
+          {/* <div className="mt-3 space-y-3">
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
@@ -113,7 +123,7 @@ export default function SignUpComponent() {
               Sign Up with Google
             </button>
           
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

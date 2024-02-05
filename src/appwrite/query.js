@@ -91,7 +91,7 @@ export class QueryService {
       try {
         //console.log(queries)
         const appwriteQueries = queries.map((query) => Query.equal(query.key, query.value));
-        console.log(appwriteQueries)
+        //console.log(appwriteQueries)
         return await this.database.listDocuments(
           config.appwritedDatabaseId,
           config.appwriteCollectionId,
