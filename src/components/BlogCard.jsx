@@ -76,7 +76,7 @@ export default function BlogCard({
           <div className="mt-4 flex space-x-3 ">
             <img
               className="h-full w-10 rounded-lg"
-              src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+              src="https://i.pinimg.com/564x/5e/c9/d9/5ec9d90cf558c385cd631b60b1a51540.jpg"
               alt={"author"}
             />
             <div>
