@@ -128,7 +128,8 @@ const Blogs = React.memo(function Blogs({AllQueries}) {
           <Loader size="xl" parentHeight="h-[60vh]" />
         ) : (
           <div className="grid gap-6 gap-y-10 py-6 sm:grid-cols-2 lg:grid-cols-3">
-            { blogs.lenght > 0 ? ( blogs?.map((blog) => (
+            {console.log( typeof(blogs)," length : ",blogs.length)}
+            { blogs.length > 0 ? ( blogs.map((blog) => (
               <Link key={blog.title} to={`/blog/${blog.$id}`}>
                 <BlogCard {...blog}  />
               </Link>
