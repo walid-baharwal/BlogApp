@@ -13,25 +13,21 @@
 
 }
 .category-container {
-    overflow-y: hidden;
-    max-width: 100%; /*Set a maximum height for the chatsection-container*/
-    overflow-x: scroll; /* Enable vertical scrolling */
-    scrollbar-width: thin; /* Specify the width of the scroll bar */
-    scrollbar-color:#d1d1e1 transparent; /* Define the colors of the scroll bar */
-  }
-  
-  .category-container::-webkit-scrollbar {
-    width: 0px;
-    height: 5px; /* Set the width of the scroll bar */
-  }
-  
-  .category-container::-webkit-scrollbar-thumb {
-    background-color:#B9B9c3; /* Set the color of the scroll bar thumb */
-    border-radius: 10px; /* Apply border radius to the scroll bar thumb */
+  overflow-y: hidden;
+  max-width: 97%; 
+  overflow-x: scroll; /* Enable vertical scrolling */
+  scrollbar-width: thin; /* Specify the width of the scroll bar */
+  scrollbar-color: #d1d1e1 transparent; /* Define the colors of the scroll bar */
 }
 
+.category-container::-webkit-scrollbar {
+  height: 5px; /* Set the width of the scroll bar */
+}
 
-  
+.category-container::-webkit-scrollbar-thumb {
+  background-color:#B9B9c3; /* Set the color of the scroll bar thumb */
+  border-radius: 10px; /* Apply border radius to the scroll bar thumb */
+}
   .category-content {
     padding-right: 2px; /* Add padding to the chat content to prevent overlap with the scroll bar */
   }
