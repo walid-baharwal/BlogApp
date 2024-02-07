@@ -13,11 +13,12 @@ export default function BlogCard({
   featuredImage,
   $createdAt,
   category,
+  author,
   userId,
 }) {
   const [timeAgo, setTimeAgo] = useState("Loading...");
-  const userLoggedinId = useSelector((state) => state.auth.userData);
-  console.log('userLoggedinId : ', userLoggedinId)
+  const userLoggedin = useSelector((state) => state.auth.userData);
+  console.log('userLoggedinId : ', userLoggedin)
   useEffect(() => { 
     const date = new Date($createdAt);
     const timeDifference = Date.now() - date.getTime();
@@ -53,9 +54,9 @@ export default function BlogCard({
         <div className="min-h-min p-3">
           <div className="mt-4 w-full  flex justify-between items-center">
             <p className="text-xs font-semibold leading-tight text-gray-700">
-              #{category}
+              #{category && category}
             </p>
-            {userId === userLoggedinId.$id && (
+            {userId === userLoggedin.$id && (
               <div className="flex gap-2 mr-2">
                 <Link to={`/editblog/${$id}`}>
                   <FileEdit
@@ -68,7 +69,7 @@ export default function BlogCard({
             )}
           </div>
           <p className="mt-4 flex-1 text-base font-semibold text-gray-900">
-            {title}
+            {title && title}
           </p>
           <span className="mt-4 w-full text-sm leading-normal text-gray-600">
             Click to explore this blog
@@ -81,7 +82,7 @@ export default function BlogCard({
             />
             <div>
               <p className="text-sm font-semibold leading-tight text-gray-900">
-                {"Tested User"}
+                {author && author}
               </p>
               <p className="text-sm leading-tight text-gray-600">{timeAgo}</p>
             </div>

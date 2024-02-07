@@ -88,8 +88,8 @@ const PostForm = ({ blog }) => {
   },[watch,slugTransform ,setValue]);
 
   return <>
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-6">
+    <form onSubmit={handleSubmit(submit)} className="lg:flex mb-8">
+            <div className="lg:w-2/3 px-6">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -107,7 +107,7 @@ const PostForm = ({ blog }) => {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-4">
+            <div className="lg:w-1/3 px-4 mt-5">
                 <Input
                     label="Featured Image :"
                     type="file"

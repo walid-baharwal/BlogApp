@@ -21,9 +21,9 @@ const Filters = React.memo(function Filters() {
   };
   return (
     <>
-      <div className="mt-10 w-full   outline outline-1 outline-gray-200 rounded-md  items-center justify-between space-x-2 py-0 md:flex md:flex-row">
+      <div className="mt-10 w-full outline outline-1 outline-gray-200 rounded-md  items-center justify-between space-x-2 py-0 md:flex md:flex-row">
         <Sorting />
-        <ul className="flex items-end w-full max-w-7xl  category-container whitespace-nowrap py-3  px-4 ">
+        <ul className="category-container flex items-center  w-full  max-w-7xl  whitespace-nowrap py-2.5 px-4 ">
           {categorys.map((category, index) => (
             <li
               onClick={() => handleCategory(index, category)}
@@ -31,7 +31,7 @@ const Filters = React.memo(function Filters() {
                 selectedItem === index
                   ? "bg-gray-200/80 text-black"
                   : "text-[#727782]"
-              } hover:bg-gray-100  mr-4  font-medium    cursor-pointer px-3 rounded-md py-2 text-base  leading-normal  text-gray-700  `}
+              } hover:bg-gray-100  mr-3  font-medium  cursor-pointer px-3 rounded-md py-2 text-base  leading-normal  text-gray-700  `}
               key={index}
             >
               {category}

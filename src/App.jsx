@@ -39,8 +39,8 @@ function App() {
         <main>
           <Outlet />
         </main>
-        <Footer />
       </div>
+        <Footer />
     </div>
   ) : null;
 }

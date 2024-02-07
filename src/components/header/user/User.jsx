@@ -12,12 +12,12 @@ const User = () => {
       <div>{userData && userData.name}</div>
       <div className="font-medium truncate">{userData && userData.email}</div>
     </div>
-    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
-      <li>
-        <Link to="/accountsetting" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Account Setting</Link>
+    <ul className="py-0 text-sm  text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+      <li className=''>
+        <Link to="/accountsetting" className="block px-4 py-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Account Setting</Link>
       </li>
     </ul>
-    <div className="py-2">
+    <div className="">
         <LogoutBtn/>
     </div>
 </div>

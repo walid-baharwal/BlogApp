@@ -12,7 +12,8 @@ import parse from "html-react-parser";
 const Blogs = React.memo(function Blogs({AllQueries}) {
   
   // console.log("B logs Rerender");
-  const blogs = useSelector((state) => state.blog.blogs);
+  const blogs = useSelector((state) => state.blog.blogs)
+  console.log(blogs);
   const loader =  SetBlogs(AllQueries)
   // console.log(blogs)
 
