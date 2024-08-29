@@ -157,3 +157,6 @@ export class QueryService {
 const queryService = new QueryService();
 
 export default queryService;
+
+
+  
