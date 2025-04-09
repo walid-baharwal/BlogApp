@@ -1,14 +1,6 @@
-import { useEffect } from "react";
 
 const About = () => {
-  useEffect(() => {
-    if (window.gtag) {
-      // Custom event to track when the user visits the blog page
-      window.gtag('event', 'genrate_lead', {
-       
-      });
-    }
-  }, []);  // Empty array ensures this only runs once when the component mounts
+  // Empty array ensures this only runs once when the component mounts
 
 
   return (
