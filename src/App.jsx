@@ -7,6 +7,7 @@ import { login, logout } from "./store/authSlice";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,8 @@ function App() {
           <Outlet />
         </main>
       </div>
-        <Footer />
+      <Footer />
+      <Analytics />
     </div>
   ) : null;
 }

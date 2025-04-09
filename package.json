@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.6",
     "@tinymce/tinymce-react": "^4.3.0",
+    "@vercel/analytics": "^1.5.0",
     "appwrite": "^13.0.0",
     "autoprefixer": "^10.4.16",
     "flowbite-react": "^0.6.4",
