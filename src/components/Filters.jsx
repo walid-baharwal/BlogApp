@@ -26,12 +26,13 @@ const Filters = React.memo(function Filters() {
         <ul className="category-container flex items-center  w-full  max-w-7xl  whitespace-nowrap py-2.5 px-4 ">
           {categorys.map((category, index) => (
             <li
+            id={category.toLowerCase()}
               onClick={() => handleCategory(index, category)}
               className={`${
                 selectedItem === index
                   ? "bg-gray-200/80 text-black"
                   : "text-[#727782]"
-              } hover:bg-gray-100  mr-3  font-medium  cursor-pointer px-3 rounded-md py-2 text-base  leading-normal  text-gray-700  `}
+              } hover:bg-gray-100  mr-3  font-medium  cursor-pointer px-3 rounded-md py-2 text-base  leading-normal  text-gray-700`}
               key={index}
             >
               {category}
